@@ -3,6 +3,12 @@ class BlogsController < ApplicationController
   end
 
   def show
+  	@blog = Blog.find(params[:id])
+  end
+
+  def index
+  	#記事を全件取得
+  	@blogs = Blog.all
   end
 
   def new
@@ -20,6 +26,6 @@ class BlogsController < ApplicationController
 
   private
   		def blog_params
-  		 params.require(:blog).perbimt(:title, :category, :body)
+  		 params.require(:blog).permit(:title, :category, :body)
   		end
 end
